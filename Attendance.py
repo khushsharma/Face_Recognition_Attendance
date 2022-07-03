@@ -21,7 +21,7 @@ def findEncodings(images):
     encodeList = []
     for img in images:
         img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB) #image converted to RGB
-        encode = face_recognition.face_encodings(img)[0]
+        encode = face_recognition.face_encodings(img)[0] #image encoded to a 128 - D face encoding for each image 
         encodeList.append(encode)
     return encodeList
 
@@ -43,8 +43,8 @@ cap = cv2.VideoCapture(0)
 
 while True:
     success , img = cap.read()
-    imgS = cv2.resize(img,(0,0),None,0.25,.25) #scale down the images
-    imgS = cv2.cvtColor(imgS,cv2.COLOR_BGR2RGB)
+    imgS = cv2.resize(img,(0,0),None,0.25,0.25) #scale down the images
+    imgS = cv2.cvtColor(imgS,cv2.COLOR_BGR2RGB) 
 
     faceCurrFrame = face_recognition.face_locations(imgS)
     encodeCurrFrame = face_recognition.face_encodings(imgS,faceCurrFrame)
